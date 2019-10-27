@@ -17,12 +17,19 @@ class SignUpForm extends React.Component {
     this.state = { ...INITIAL_STATE };
   }
   onSubmit = event => {
-    const { email, passwordOne } = this.state;
-    this.props.firebase
+    const { firebase, history } = this.props;
+    const { username, email, passwordOne } = this.state;
+    firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        return firebase.user(authUser.user.uid).set({
+          username,
+          email,
+        });
+      })
+      .then(authUser => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.SIGN_IN);
+        history.push(ROUTES.SIGN_IN);
       })
       .catch(error => {
         this.setState({ error });
