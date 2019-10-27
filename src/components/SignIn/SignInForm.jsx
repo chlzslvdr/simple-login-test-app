@@ -66,11 +66,6 @@ class SignInForm extends React.Component {
             </Button>
 
             {error && <p>{error.message}</p>}
-
-            <div>
-              <span>Not yet a member?</span>
-              <Button color='link'>Sign Up Here</Button>
-            </div>
           </form>
         </div>
       </div>

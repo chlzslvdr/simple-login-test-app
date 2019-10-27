@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Input, FormGroup } from 'reactstrap';
 import * as ROUTES from '../../constants/routes';
 
@@ -89,19 +90,16 @@ class SignUpForm extends React.Component {
             </FormGroup>
             <br />
 
-            <Button color='primary' type='submit'>
+            <Button color='primary' disabled={isInvalid} type='submit'>
               SIGN UP
             </Button>
 
             {error && <p>{error.message}</p>}
           </form>
 
-          <div>
-            <span>Are you a member here?</span>
-            <Button color='link' disabled={isInvalid}>
-              Log In Here
-            </Button>
-          </div>
+          <p>
+            Are you a member here?<Link to={ROUTES.SIGN_IN}>Log In Here</Link>
+          </p>
         </div>
       </div>
     );
