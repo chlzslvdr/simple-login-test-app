@@ -1,44 +1,27 @@
 import React from 'react';
-import { Button, Input, FormGroup } from 'reactstrap';
+import { Link, withRouter } from 'react-router-dom';
+import { withFirebase } from '../Firebase';
+import * as ROUTES from '../../constants/routes';
+import SignUpFormBase from './SignUpForm';
+import { compose } from 'recompose';
 
-class SignUp extends React.Component {
-  render() {
-    return (
-      <div className='sign-up-section'>
-        <span>SIGN UP</span>
-        <div className='sign-up-container'>
-          <FormGroup>
-            <Input name='name' placeholder='your name' />
-          </FormGroup>
+const SignUpPage = () => (
+  <div>
+    <h1>SignUp</h1>
+    <SignUpForm />
+  </div>
+);
 
-          <br />
-          <FormGroup>
-            <Input type='email' name='email' placeholder='your email' />
-          </FormGroup>
+const SignUpLink = () => (
+  <p>
+    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+  </p>
+);
 
-          <br />
-          <FormGroup>
-            <Input type='password' name='password' placeholder='password' />
-          </FormGroup>
+const SignUpForm = compose(
+  withRouter,
+  withFirebase,
+)(SignUpFormBase);
 
-          <br />
-          <FormGroup>
-            <Input
-              type='password'
-              name='confirmPass'
-              placeholder='confirm password'
-            />
-          </FormGroup>
-
-          <Button color='primary'>SIGN UP</Button>
-          <div>
-            <span>Are you a member here?</span>
-            <Button color='link'>Log In Here</Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default SignUp;
+export default SignUpPage;
+export { SignUpForm, SignUpLink };
