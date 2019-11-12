@@ -1,19 +1,16 @@
-import React from 'react';
-import { Button, Input, FormGroup } from 'reactstrap';
-import * as ROUTES from '../../constants/routes';
+import React from "react";
+import { Button, Input, FormGroup } from "reactstrap";
+import * as ROUTES from "../../constants/routes";
 
 const INITIAL_STATE = {
-  email: '',
-  password: '',
-  error: null,
+  email: "",
+  password: "",
+  error: null
 };
 
 class SignInForm extends React.Component {
-  constructor(props) {
-    super(props);
+  state = { ...INITIAL_STATE };
 
-    this.state = { ...INITIAL_STATE };
-  }
   onSubmit = event => {
     const { email, password } = this.state;
     this.props.firebase
@@ -34,34 +31,34 @@ class SignInForm extends React.Component {
 
   render() {
     const { email, password, error } = this.state;
-    const isInvalid = password === '' || email === '';
+    const isInvalid = password === "" || email === "";
 
     return (
-      <div className='login-section'>
-        <div className='login-container'>
+      <div className="login-section">
+        <div className="login-container">
           <form onSubmit={this.onSubmit}>
             <FormGroup>
               <Input
-                name='email'
+                name="email"
                 value={email}
                 onChange={this.onChange}
-                type='text'
-                placeholder='your email'
+                type="text"
+                placeholder="your email"
               />
             </FormGroup>
 
             <br />
             <FormGroup>
               <Input
-                name='password'
+                name="password"
                 value={password}
                 onChange={this.onChange}
-                type='password'
-                placeholder='your password'
+                type="password"
+                placeholder="your password"
               />
             </FormGroup>
 
-            <Button color='primary' disabled={isInvalid}>
+            <Button color="primary" disabled={isInvalid}>
               LOGIN
             </Button>
 

@@ -1,39 +1,37 @@
-import React, { Component } from 'react';
-import { withFirebase } from '../Firebase';
+import React, { Component } from "react";
+import { withFirebase } from "../../components/Firebase";
 
-import UserList from './UserList';
+import UserList from "./UserList";
 
 class AdminPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      users: [
-        {
-          uid: 'kmuAzaocOkMh9EsyRkt0auWwj293',
-          email: 'chelzeasalvador@gmail.com',
-          username: 'chlo',
-        },
-        {
-          uid: 'AUjRsKt414bPVgXtLN8Sja7wu4V2',
-          email: 'rowan@whitethorn.com',
-          username: 'rowan',
-        },
-      ],
-    };
-  }
+  state = {
+    loading: false,
+    users: [
+      {
+        uid: "kmuAzaocOkMh9EsyRkt0auWwj293",
+        email: "chelzeasalvador@gmail.com",
+        username: "chlo"
+      },
+      {
+        uid: "AUjRsKt414bPVgXtLN8Sja7wu4V2",
+        email: "rowan@whitethorn.com",
+        username: "rowan"
+      }
+    ]
+  };
+
   componentDidMount() {
     const { firebase } = this.props;
     this.setState({ loading: true });
-    firebase.users().on('value', snapshot => {
+    firebase.users().on("value", snapshot => {
       const usersObject = snapshot.val();
       const usersList = Object.keys(usersObject).map(key => ({
         ...usersObject[key],
-        uid: key,
+        uid: key
       }));
       this.setState({
         users: usersList,
-        loading: false,
+        loading: false
       });
     });
   }

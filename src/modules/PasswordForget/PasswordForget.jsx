@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 const INITIAL_STATE = {
-  email: '',
-  error: null,
+  email: "",
+  error: null
 };
 
 class PasswordForgetForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { ...INITIAL_STATE };
-  }
+  state = { ...INITIAL_STATE };
+
   onSubmit = event => {
     const { firebase } = this.props;
     const { email } = this.state;
@@ -30,18 +28,18 @@ class PasswordForgetForm extends Component {
 
   render() {
     const { email, error } = this.state;
-    const isInvalid = email === '';
+    const isInvalid = email === "";
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
-          name='email'
+          name="email"
           value={email}
           onChange={this.onChange}
-          type='text'
-          placeholder='Email Address'
+          type="text"
+          placeholder="Email Address"
         />
-        <button disabled={isInvalid} type='submit'>
+        <button disabled={isInvalid} type="submit">
           Reset My Password
         </button>
         {error && <p>{error.message}</p>}

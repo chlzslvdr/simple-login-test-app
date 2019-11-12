@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../../constants/routes';
-import { AuthUserContext } from '../Session';
+import React from "react";
+import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants/routes";
+import { AuthUserContext } from "../../components/Session";
 
-import SignOutButton from '../SignOut';
+import SignOutButton from "../SignOut";
 
 const Navigation = () => (
   <div>
@@ -12,6 +12,7 @@ const Navigation = () => (
     </AuthUserContext.Consumer>
   </div>
 );
+
 const NavigationAuth = () => (
   <ul>
     <li>
@@ -31,6 +32,7 @@ const NavigationAuth = () => (
     </li>
   </ul>
 );
+
 const NavigationNonAuth = () => (
   <ul>
     <li>

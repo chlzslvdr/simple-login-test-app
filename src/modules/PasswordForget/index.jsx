@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { withFirebase } from '../Firebase';
-import * as ROUTES from '../../constants/routes';
-import PasswordForgetFormBase from './PasswordForget';
+import React from "react";
+import { Link } from "react-router-dom";
+import { withFirebase } from "../../components/Firebase";
+import * as ROUTES from "../../constants/routes";
+import PasswordForgetFormBase from "./PasswordForget";
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
